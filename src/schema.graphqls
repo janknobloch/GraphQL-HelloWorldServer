@@ -1,0 +1,29 @@
+type Link {
+  url: String!
+  description: String!
+}
+type User {
+  name: String!
+  links: [Link]
+}
+
+type Query {
+  allLinks: [Link]
+  getLinkById(id: Int) : Link
+  allUsers: [User]
+  getUserById(id: Int) : User
+}
+
+
+schema {
+  query: Query
+}
+type Mutation {
+  createLink(url: String!, description: String!): Link
+  #addLinktoUser(name:String!, link:Link!) : User 
+  removeLink(id: Int): Boolean
+}
+schema {
+    query: Query
+    mutation: Mutation
+}
